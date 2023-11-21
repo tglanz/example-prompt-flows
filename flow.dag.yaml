@@ -1,0 +1,50 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  deployment_name:
+    type: string
+    default: OurGPT
+  chat_history:
+    type: list
+    is_chat_history: true
+    default: []
+  person:
+    type: string
+    is_chat_input: true
+    default: Keanu Reeves
+outputs:
+  summary:
+    type: string
+    reference: ${summary.output}
+    is_chat_output: true
+nodes:
+- name: introduction
+  type: llm
+  source:
+    type: code
+    path: introduction.jinja2
+  inputs:
+    deployment_name: ${inputs.deployment_name}
+    chat_history: ${inputs.chat_history}
+    person: ${inputs.person}
+  connection: open_ai_connection
+  api: chat
+- name: birthdate
+  type: llm
+  source:
+    type: code
+    path: birthdate.jinja2
+  inputs:
+    deployment_name: ${inputs.deployment_name}
+    chat_history: ${inputs.chat_history}
+  connection: open_ai_connection
+  api: chat
+- name: summary
+  type: prompt
+  source:
+    type: code
+    path: summary.jinja2
+  inputs:
+    person: ${inputs.person}
+    birthdate: ${birthdate.output}

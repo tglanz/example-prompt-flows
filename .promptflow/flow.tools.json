@@ -1,0 +1,64 @@
+{
+  "package": {},
+  "code": {
+    "chat.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "Chat with Chatbot"
+    },
+    "birthdate.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "birthdate.jinja2"
+    },
+    "summary.jinja2": {
+      "type": "prompt",
+      "inputs": {
+        "person": {
+          "type": [
+            "string"
+          ]
+        },
+        "birthdate": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "summary.jinja2"
+    },
+    "introduction.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "person": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "introduction.jinja2"
+    }
+  }
+}
