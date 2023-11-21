@@ -43,22 +43,6 @@
         }
       },
       "source": "summary.jinja2"
-    },
-    "introduction.jinja2": {
-      "type": "llm",
-      "inputs": {
-        "chat_history": {
-          "type": [
-            "string"
-          ]
-        },
-        "person": {
-          "type": [
-            "string"
-          ]
-        }
-      },
-      "source": "introduction.jinja2"
     }
   }
 }
